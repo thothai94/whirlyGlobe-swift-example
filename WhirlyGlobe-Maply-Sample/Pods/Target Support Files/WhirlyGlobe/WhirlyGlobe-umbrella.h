@@ -91,6 +91,7 @@
 #import "MapboxMultiSourceTileInfo.h"
 #import "MapboxVectorImageInterpreter.h"
 #import "MapboxVectorStyleBackground.h"
+#import "MapboxVectorStyleCircle.h"
 #import "MapboxVectorStyleFill.h"
 #import "MapboxVectorStyleLine.h"
 #import "MapboxVectorStyleRaster.h"

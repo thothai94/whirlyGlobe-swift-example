@@ -54,7 +54,7 @@
 /** 
     Image or texture to use for the marker.
     
-    If set we'll stretch this UIImage (or MaplyTexture) out over the marker rectangle.  If not set, the marker will just be a colored rectange.  The view controller tracks this object and will reuse its texture and dispose of it as needed.
+    If set we'll stretch this UIImage (or MaplyTexture) out over the marker rectangle.  If not set, the marker will just be a colored rectangle.  The view controller tracks this object and will reuse its texture and dispose of it as needed.
   */
 @property (nonatomic,strong) id  __nullable image;
 
@@ -117,6 +117,11 @@
     If set, this marker can be selected by the user.  If not set, this screen marker will never appear in selection results.
  */
 @property (nonatomic,assign) bool selectable;
+
+/**
+    A unique identifier for the marker that's propagated through the system.
+  */
+@property (nonatomic,retain,nullable) NSString *uniqueID;
 
 /** 
     User data object for selection

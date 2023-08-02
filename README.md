@@ -17,10 +17,13 @@ Land surface temperature layer thanks to [NASA GIBS](https://wiki.earthdata.nasa
 Coastline layer, Coastlines / Border / Roads layer thanks to [NASA GIBS](https://wiki.earthdata.nasa.gov/display/GIBS/GIBS+Available+Imagery+Products). Data by [OpenStreetMap](http://openstreetmap.org), under [ODbL](http://www.openstreetmap.org/copyright). 
 
 ## Setup
+Install lfs, mercurial.
+```console
+foo@bar:~$ git lfs install
+foo@bar:~$ brew install mercurial
+```
 
 Run ```pod install```, then open the workspace.
-
->Note: before running pod install, mercurial must be installed to satisfy a WhirlyGlobe-Maply dependecy, "eigen". 
 
 ## Screenshots
 

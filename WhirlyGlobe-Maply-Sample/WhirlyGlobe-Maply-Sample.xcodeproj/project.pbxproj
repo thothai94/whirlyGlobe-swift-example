@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		15D70C790B7A9A6F6713A8F9 /* Pods_WhirlyGlobe_Maply_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2535F997B3CCD8109FC66B7D /* Pods_WhirlyGlobe_Maply_Sample.framework */; };
+		11F20F542A77638A00DA2454 /* Pods_WhirlyGlobe_Maply_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2535F997B3CCD8109FC66B7D /* Pods_WhirlyGlobe_Maply_Sample.framework */; };
 		95EEA8EF230B233D001782EA /* LayerSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EEA8EE230B233D001782EA /* LayerSource.swift */; };
 		95EF479D230A309100ED72E8 /* geography-class.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = 95EF479B230A309100ED72E8 /* geography-class.mbtiles */; };
 		95EF479E230A309100ED72E8 /* control-room.mbtiles in Resources */ = {isa = PBXBuildFile; fileRef = 95EF479C230A309100ED72E8 /* control-room.mbtiles */; };
@@ -45,7 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15D70C790B7A9A6F6713A8F9 /* Pods_WhirlyGlobe_Maply_Sample.framework in Frameworks */,
+				11F20F542A77638A00DA2454 /* Pods_WhirlyGlobe_Maply_Sample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,13 +384,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D7NC28QP79;
+				DEVELOPMENT_TEAM = 36PM223LC2;
 				INFOPLIST_FILE = "WhirlyGlobe-Maply-Sample/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "clarknt.WhirlyGlobe-Maply-Sample";
+				PRODUCT_BUNDLE_IDENTIFIER = "vn.vnpt.WhirlyGlobe-Maply-Sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -403,13 +403,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D7NC28QP79;
+				DEVELOPMENT_TEAM = 36PM223LC2;
 				INFOPLIST_FILE = "WhirlyGlobe-Maply-Sample/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "clarknt.WhirlyGlobe-Maply-Sample";
+				PRODUCT_BUNDLE_IDENTIFIER = "vn.vnpt.WhirlyGlobe-Maply-Sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -41,11 +41,9 @@ class MainViewController: UIViewController {
     
     private var layersSources = [LayerSource]()
     private var currentLayers = [String: MaplyViewControllerLayer]()
-    
+
     private var currentGlobeMapType: GlobeMapType = .globe
-    
-    
-    
+
     // MARK:- GUI
     
     override func viewDidLoad() {
@@ -54,14 +52,14 @@ class MainViewController: UIViewController {
         title = "WhirlyGlobe-Maply - Sample"
         
         setupToolbar()
-        
+
         populateLocalTiles()
         populateRemoteTiles()
         populateLayers()
         
         setupView()
         setDefaultBaseLayer()
-  
+
         animateToDefaultPosition()
     }
     
@@ -69,13 +67,13 @@ class MainViewController: UIViewController {
         globeMapButtonItem = UIBarButtonItem(image: mapImage, style: .plain, target: self, action: #selector(globeMapButtonTapped))
 
         tilesButtonItem = UIBarButtonItem(image: UIImage(named: "tiles"), style: .plain, target: self, action: #selector(tilesButtonTapped))
-        
+
         layersButtonItem = UIBarButtonItem(image: UIImage(named: "layers"), style: .plain, target: self, action: #selector(layersButtonTapped))
-        
+
         toolbarItems = [globeMapButtonItem, tilesButtonItem, layersButtonItem]
         navigationController?.isToolbarHidden = false
     }
-    
+
     func setupView() {
         globeMapViewController?.removeFromParent()
         
@@ -153,24 +151,24 @@ class MainViewController: UIViewController {
             setBaseLayer(source: tilesSources[0])
         }
     }
-    
+
     func setBaseLayer(source: TilesSource) {
         // black background for a globe, white background for a map
         globeMapViewController!.clearColor = currentGlobeMapType == .globe ? UIColor.black : UIColor.white
-        
+
         // 30 fps
         globeMapViewController!.frameInterval = 2
-        
+
         // prepare layer
         let layer: MaplyQuadImageTilesLayer?
-        
+
         if source.type == .local {
             layer = getLocalLayer(source: source as! LocalTilesSource)
         }
         else {
             layer = getRemoteLayer(source: source as! RemoteTilesSource, globeMapType: .globe)
         }
-        
+
         globeMapViewController!.removeAllLayers()
 
         currentTileSource = source
@@ -180,16 +178,16 @@ class MainViewController: UIViewController {
             globeMapViewController!.add(layer)
         }
     }
-    
+
     func getLocalLayer(source: LocalTilesSource) -> MaplyQuadImageTilesLayer? {
         guard let tileSource = MaplyMBTileSource(mbTiles: source.filename) else {
             print("Could not load local tile set")
             return nil
         }
-        
+
         return MaplyQuadImageTilesLayer(tileSource: tileSource)!
     }
-    
+
     func getRemoteLayer(source: RemoteTilesSource, globeMapType: GlobeMapType)  -> MaplyQuadImageTilesLayer? {
         guard let tileSource = MaplyRemoteTileSource(baseURL: source.url, ext: source.ext, minZoom: 0, maxZoom: source.maxZoom) else {
                 print("Could not create remote tile source")
@@ -200,7 +198,7 @@ class MainViewController: UIViewController {
         let baseCacheDir = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
         let tilesCacheDir = "\(baseCacheDir)/\(source.name.replacingOccurrences(of: " ", with: ""))/"
         tileSource.cacheDir = tilesCacheDir
-        
+
         let layer = MaplyQuadImageTilesLayer(tileSource: tileSource)!
         layer.handleEdges = (globeMapType == .globe)
         layer.coverPoles = (globeMapType == .globe)
@@ -208,10 +206,10 @@ class MainViewController: UIViewController {
         layer.waitLoad = false
         layer.drawPriority = 0
         layer.singleLevelLoading = false
-        
+
         return layer
     }
-    
+
     func toggleOverlayLayer(source: LayerSource) {
         let currentLayer = currentLayers[source.name]
 
@@ -219,27 +217,27 @@ class MainViewController: UIViewController {
             removeOverlayLayer(source: source)
             return
         }
-        
+
         addOverlayLayer(source: source)
     }
-    
+
     func removeOverlayLayer(source: LayerSource) {
         let currentLayer = currentLayers[source.name]
-        
+
         // remove layer
         if currentLayer != nil {
             currentLayers[source.name] = nil
             globeMapViewController?.remove(currentLayer!)
         }
     }
-    
+
     func addOverlayLayer(source: LayerSource) {
         // For network paging layers, where we'll store temp files
         let cacheDir = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
         if let tileSource = MaplyRemoteTileSource(baseURL: source.url, ext: source.ext, minZoom: 1, maxZoom: source.maxZoom) {
             tileSource.cacheDir = "\(cacheDir)/\(source.name.replacingOccurrences(of: " ", with: ""))/"
             //tileSource.tileInfo.cachedFileLifetime = 60*60*24 // invalidate data after 24 hours
-            
+
             if let layer = MaplyQuadImageTilesLayer(tileSource: tileSource) {
                 layer.coverPoles = false
                 layer.handleEdges = false
@@ -250,7 +248,7 @@ class MainViewController: UIViewController {
             }
         }
     }
-    
+
     
     
     // MARK:- Animation
@@ -311,7 +309,7 @@ class MainViewController: UIViewController {
     
     @objc func globeMapButtonTapped(_ sender: Any) {
         let position: MaplyCoordinate
-        
+
         if currentGlobeMapType == .globe {
             currentGlobeMapType = .map
             globeMapButtonItem.image = globeImage
@@ -351,7 +349,7 @@ class MainViewController: UIViewController {
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(ac, animated: true)
     }
-    
+
     @objc func layersButtonTapped(_ sender: Any) {
         let ac = UIAlertController(title: "Layers", message: nil, preferredStyle: .actionSheet)
         ac.popoverPresentationController?.barButtonItem = layersButtonItem
